@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+# vim: ft=python tabstop=8 expandtab shiftwidth=4 softtabstop=4
+import sys,os
+# Generic port checker 
+# Requires nmap and grep
+
+def main():
+    host = sys.argv[1]
+    ret = os.system('nmap ' + host + ' -PN -p 515 | grep open > /dev/null')
+    if ret !=0:
+        #print('SSH is down!')
+        sys.exit(1)
+
+main()
